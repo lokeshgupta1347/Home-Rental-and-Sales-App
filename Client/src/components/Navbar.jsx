@@ -14,7 +14,7 @@ const Navbar = (setmenuOpened,containerStyles) => {
   return (
     <nav className={`${containerStyles}`} >
       {navLinks.map((link)=>{
-        <NavLink key={link.title}>
+        <NavLink onClick={()=>{setmenuOpened(false);scrollTo(0,0);}} key={link.title} to={link.path} className={({isActive})=>`${isActive ? "active-link" : ""}px-3 py rounded-full uppercase text-sm font-bold`}>
         {link.title}
 
         </NavLink>
@@ -26,3 +26,9 @@ const Navbar = (setmenuOpened,containerStyles) => {
 }
 
 export default Navbar
+
+
+
+   
+
+
