@@ -2,6 +2,9 @@ import React, { useEffect, useState } from 'react'
 import { assets } from '../assets/data'
 import Navbar from './Navbar'
 import {Link, useLocation} from 'react-router-dom'
+import { useClerk, UserButton, useUser } from '@clerk/react'
+import { useAppContext } from '../context/AppContext'
+
 
 const Header = () => {
 
@@ -9,6 +12,9 @@ const Header = () => {
   const [menuOpened,setmenuOpened]=useState(false)
   const [showSearch, setshowSearch] = useState(false)
   const location =useLocation()
+  const {navigate}=useAppContext()
+  const {user}=useUser()
+const {openSignIn}=useClerk()
 
   const toggleMenu=()=>setmenuOpened(prev=>!prev)
 
@@ -94,15 +100,39 @@ const Header = () => {
             )}
           </>
           {/* userprofile */}
+          <div className='group relative top-1'>
+          
           <div>
-          {/* user  */}
-          <div>
-            <div>
-              <button className='btn-secondary flexCenter gap-2 rounded-full'>
+            {user ? (
+              <UserButton
+              appearance={{
+                elements:{
+                  UserButtonAvatarBox:{
+                    width:"42px",
+                    heigth:"42px"
+                  }
+                }
+              }}
+              >
+                <UserButton.MenuItems>
+                  <UserButton.Action
+                  Label="My Bookings"
+                  LabelIcon={<BookingIcon/>}
+                  onClick={()=>navigate('/my-bookings')}
+                  
+                  ></UserButton.Action>
+                </UserButton.MenuItems>
+              </UserButton>
+            ):
+            (
+
+                          
+              <button onClick={openSignIn} className='btn-secondary flexCenter gap-2 rounded-full'>
               Login
               <img src={assets.user} alt="userIcon" />
               </button>
-            </div>
+            )          
+            }
           </div>
 
           </div>
