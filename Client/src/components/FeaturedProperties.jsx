@@ -14,7 +14,7 @@ import Item from './Item';
 
 const FeaturedProperties = () => {
 
-  const {properties}=useAppContext
+  const {properties}=useAppContext()
 
 
   return (
