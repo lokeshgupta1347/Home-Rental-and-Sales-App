@@ -6,6 +6,7 @@ import Footer from './pages/Footer'
 import Blog from './pages/Blog'
 import Contact from './pages/Contact'
 import Home from './pages/Home'
+import PropertyDetails from './pages/PropertyDetails'
 
 const App = () => {
 
@@ -18,6 +19,8 @@ const App = () => {
       <Routes>
         <Route path='/' element={<Home/>}/>
         <Route path='/listing' element={<Listing/>}/>
+        <Route path='/listing/:id' element={<PropertyDetails/>}/>
+
         <Route path='/blog' element={<Blog/>}/>
         <Route path='/contact' element={<Contact/>}/>
        

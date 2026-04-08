@@ -1,7 +1,10 @@
 import React from 'react'
 import {useAppContext} from "../context/AppContext";
+import Item from '../components/Item';
+
+
 const Listing = () => {
-  const {properties}= -useAppContext();
+  const {properties}= useAppContext();
 
   const sortOptions=[ "Relevant", "Low to High", "High to Low"];
 
@@ -26,7 +29,7 @@ const Listing = () => {
   return (
     <div className='bg-gardient-to-r from-[#fffbee] to-white py-28'>
       <div className='max-padd-container flex flex-col sm:flex-row gap-8 mb-16'>
-        {/* filters  */}
+        {/*left side  filters  */}
         <div className='bg-secondary/10 ring-1 ring-slate-900/5 p-4 sm:min-w-60 sm:h-[600px] rounded-xl'>
           {/* sort  by price */}
           <div className='py-3 mt-4'>
@@ -67,6 +70,24 @@ const Listing = () => {
 
 
         </div>
+
+        {/* right side filters 
+         */}
+         <div className='min-h-[97vh] overflow-y-scroll rounded-xl'>
+         {properties.length > 0 ? (
+          <div className='grid grid-6 grid cols-1 lg:grid-cols-2 xl:grid-cols-3'>
+            {properties.map((property)=>{
+              <Item key={property._id} property={property}/>
+            })}
+          </div>
+
+
+         ):(
+          <div className='text-center text-gray-500 mt-20'>No matches found</div>
+
+         )}
+
+         </div>
       </div>
     </div>
   )
