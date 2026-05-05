@@ -5,7 +5,7 @@ import PropertyImages from "../components/PropertyImages";
 import { assets } from "../assets/data";
 
 const PropertyDetails = () => {
-  const { properties } = useAppContext();
+  const {currency, properties } = useAppContext();
   const [property, setproperty] = useState(null);
   const { id } = useParams();
 
@@ -15,7 +15,7 @@ const PropertyDetails = () => {
   }, [properties]);
   return (
     property && (
-      <div className="bg-gradient-to-r from-[#fffbee] to-white py-28">
+      <div className="bg-gradient-to-r from-[#fffbee] to-white py-16  pt-28">
         <div className="max-padd-container">
           {/* image  */}
           <PropertyImages property={property}></PropertyImages>
@@ -31,7 +31,7 @@ const PropertyDetails = () => {
               <div className="flex justify-between flex-col sm:flex-row sm:items-end mt-3">
                 <h3 className="h3">{property.title}</h3>
                 <div className="bold-18">
-                  ${property.price.sale} | ${property.price.sale}.00/night
+                  {currency}{property.price.sale} | ${property.price.sale}.00/night
                 </div>
               </div>
 

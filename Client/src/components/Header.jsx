@@ -21,8 +21,8 @@ const Header = () => {
   const [menuOpened,setmenuOpened]=useState(false)
   const [showSearch, setshowSearch] = useState(false)
   const location =useLocation()
-  const {navigate}=useAppContext()
-  const {user}=useUser()
+  const {navigate,user}=useAppContext()
+
 const {openSignIn}=useClerk()
 
   const toggleMenu=()=>setmenuOpened(prev=>!prev)

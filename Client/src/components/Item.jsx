@@ -1,8 +1,10 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import { assets } from '../assets/data'
+import { useAppContext } from '../context/AppContext'
 
 const Item = ({property}) => {
+    const {currency}=useAppContext()
   return (
     <Link to={'/listing/' + property.id}
     className='black rounded-lg bg-white ring-1 slate-900/5'>
@@ -18,7 +20,7 @@ const Item = ({property}) => {
         <div className='flexBetween'>
         <h5 className='bold-16 my-1 '>{property.propertyType}</h5>
         <div className='bold-15 text-secondary'>
-            ${property.price.sale} | ${property.price.rent}.00<span className='text-x5'>/night</span>
+            {currency}{property.price.sale} | ${property.price.rent}.00<span className='text-x5'>/night</span>
         </div>
 
 
